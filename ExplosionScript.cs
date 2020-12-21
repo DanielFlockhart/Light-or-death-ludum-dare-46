@@ -18,14 +18,6 @@ public class ExplosionScript : MonoBehaviour
     public VisualEffect explosionEffect;
     public GameObject laserobj;
     private float enabledtimed =2f;
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         timeToExplodable -= Time.deltaTime;
@@ -82,14 +74,12 @@ public class ExplosionScript : MonoBehaviour
         {
             RaycastHit hit;
             if (Physics.Raycast(player.transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, lmsk))
-            { // Ensure layer mask not avoid raycast
-                Debug.Log(hit.collider.name); // Set shield to ignore raycast
+            {
                 if (hit.collider.tag == "Enemy")
                 {
                     hit.collider.GetComponent<EnemyController>().takeDamageEnemy(laserDmg);
                 }
             }
-
             timeToLaser = 10f;
             isLaser = false;
         }
