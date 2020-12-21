@@ -106,7 +106,6 @@ public class playerscript : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            //sword.GetComponent<Renderer>().enabled = false;
             anim.SetBool("isattacking", false);
         }
 
@@ -179,13 +178,6 @@ public class playerscript : MonoBehaviour
         currentvelocity.y = 0;
         transform.rotation = Quaternion.LookRotation(currentvelocity);
         
-
-
-
-        //if (forward + right != Vector3.zero)
-        //{
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(forward + right), 0.1f);
-        //}
         orb.GetComponent<OrbScript>().moveOrb(currentvelocity);
         if (PlayerHealth <= 0)
         {
@@ -197,7 +189,6 @@ public class playerscript : MonoBehaviour
             RegenTime = 0;
         }
 
-        //ResetAnims();
     }
     public void takeDamage(float damage)
     {
@@ -248,8 +239,6 @@ public class playerscript : MonoBehaviour
     }
     void block()
     {
-        // Shield Animation Start her
-        //anim.Play("Shield");
         if (cansheild)
         {
             isShielding = true;
@@ -262,16 +251,10 @@ public class playerscript : MonoBehaviour
     }
     void powerMove()
     {
-        // Power move animation start here
-        //anim.Play("power");
-        Debug.Log("Power move");
         manager.GetComponent<ExplosionScript>().explode();
     }
     void LaserBeam()
     {
-        // Laser beam animation start here
-        //anim.Play("laser");
-        Debug.Log("Laser Beam");
         manager.GetComponent<ExplosionScript>().laser();
         
     }
